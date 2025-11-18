@@ -1,0 +1,87 @@
+*, *::before, *::after{
+    box-sizing: border-box;
+}
+
+html, body{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    background-color: rgb(255, 255, 255);
+}
+
+header{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    background-color: rgb(213, 213, 213);
+}
+
+body.dark_mode header{
+    background-color: black !important;
+}
+
+header .btn button{
+    width: 130px;
+    height: 30px;
+    cursor: pointer;
+    margin: 20px;
+    border-radius: 20px;
+    border: none;
+    transition: all 0.3s ease;
+    font-size: 14px;
+}
+
+
+header .btn :first-child{
+    background-color: rgb(37, 149, 56);
+    color: white;
+}
+
+header .btn :last-child{
+    background-color: rgb(146, 47, 47);
+    color: white;
+}
+
+header .btn :first-child:hover{
+    background-color: rgb(5, 68, 15);
+    color: white;
+}
+
+header .btn :last-child:hover{
+    background-color: rgb(68, 5, 5);
+    color: white;
+}
+
+main{
+    display: flex;
+    height: 100%;
+    gap: 30px;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgb(146, 146, 146);
+    overflow: auto;
+    padding: 20px ;
+}
+
+
+.div{
+    width: 800px;
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    align-items: center;
+    background-color: rgb(204, 204, 204);
+    border-radius: 20px;
+}
+
+body.dark_mode .div{
+    background-color: rgba(0, 0, 0, 0.553);
+}

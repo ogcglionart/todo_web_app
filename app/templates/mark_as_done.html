@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Change status</title>
+        <link rel="stylesheet" href="{{url_for('static', filename='mark_as_done.css')}}">
+    </head>
+    {% extends "base.html" %}
+    <body>
+        {% block content %}
+            <main>
+                <h1>Mark as Done/Pending</h1>
+                <form id="updateForm" action="{{ url_for('task_bp.mark_status') }}" method="POST">
+                    {% if tasks %}
+                        <button type="submit">update all</button>
+                        {% for task in tasks %}
+                            <div class="label">
+                                <span style="display: flex;
+                                            width: 400px;">
+                                    {{task['task_text']}}
+                                </span>
+                                <div class="mark-done-div">
+                                    <!-- Mark as Done -->
+                                    <label class="custom_radio1" id="c-r1">
+                                        <input type="radio"
+                                                name="status_{{task['id']}}"
+                                                value="completed"
+                                                {% if task['status'] == 'completed' %} checked {% endif %}>
+                                        <span class="radio_btn1">Done ✅</span>
+                                    </label>
+
+                                    <!-- Mark as pending-->
+                                    <label class="custom_radio2" id="c-r2">
+                                        <input type="radio"
+                                                name="status_{{task['id']}}"
+                                                value="pending"
+                                                {% if task['status'] == 'pending' %} checked {% endif %}>
+                                        <span class="radio_btn2">pending ⏳</span>
+                                    </label>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                            <div style="
+                                        padding: 10px;
+                                        border: none;
+                                        width: 500px;
+                                        height: 80px;
+                                        box-shadow: 0 0 10px black;
+                                        margin-top: 50px;">
+                                <marquee>
+                                    {{message}}
+                                </marquee>
+                            </div>
+                    {% endif %}
+                </form>
+            </main>
+        {% endblock %}
+    </body>
+</html>

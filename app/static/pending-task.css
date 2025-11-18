@@ -1,0 +1,129 @@
+*, *::after,*::before{
+    box-sizing: border-box;
+    margin: 0;
+}
+
+
+html, body{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+
+body{
+    display: flex;
+    background-color: rgb(0, 0, 0);
+    min-height: 100%;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+
+main{
+    display: flex;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgb(255, 255, 255);
+    padding: 10px 300px;
+
+}
+
+main .list-div{
+    display: flex;
+    height: 500px;
+    min-height: 100%;
+    flex: 1;
+    padding: 80px;
+    overflow: auto;
+    border-radius: 20px;
+}
+
+header{
+    flex: 0 0 2px;
+    background-color: rgb(18, 0, 0);
+    display: flex;
+    height: min-content;    
+}
+
+.list-div ul{
+    font-size: 20px;
+    padding: 20px;
+    width: 700px;
+    animation: glow 0.9s linear infinite;
+    background-color: rgb(164, 163, 160);
+    border-radius: 20px;
+    overflow-wrap: break-word;
+    overflow: auto;
+    list-style-type: none;
+}
+
+body.dark_mode .list-div ul{
+    background-color: black;
+    border: 1px solid white;
+}
+
+@keyframes glow{
+    from{
+        box-shadow: 0 0 2px red;
+    }
+    to{
+        box-shadow: 0 0 20px red;
+    }
+}
+
+.list-div ul li{
+    padding: 20px;
+    background-color: rgb(246, 246, 246);
+    margin: 50px;
+    border-radius: 20px;
+}
+
+body.dark_mode .list-div ul li{
+    background-color: rgb(39, 32, 32);
+}
+
+.header-div{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    background-color: rgb(50, 18, 18);
+    justify-content: space-around;
+    padding: 17px;
+}
+
+body.dark_mode .header-div{
+    background-color: black;
+}
+
+
+.header-div button{
+    align-self: center;
+    height: 50px;
+    font-size: 15px;
+    border-radius: 20px;
+    border: none;
+    background-color: rgb(10, 119, 36);
+    color: aliceblue;
+    padding: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out; 
+}
+
+body.dark_mode .header-div button{
+    background-color: rgb(6, 41, 5);
+}
+
+.header-div button:hover{
+    background-color: rgb(3, 32, 3);
+    color: aqua;
+    transform: scale(1.1);
+}
+
+
+h1{
+    font-size: 20px;
+    padding: 20px;
+    color: white;
+}

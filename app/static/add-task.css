@@ -1,0 +1,357 @@
+*, *::before, *::after{
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    background-color: rgba(70, 152, 152, 0.324);
+}
+
+
+main{
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    flex-wrap: wrap;
+    min-height: max-content;
+}
+
+.add-task-section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    max-width: 100%;
+    padding: 10px;
+    flex: 1 1 300px;
+    
+}
+
+
+.drop-down{
+    position: relative;
+}
+
+.menu{
+    cursor: text;
+    user-select: none;
+}
+
+
+.drop-down-content{
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0px 8px 16px black;
+    min-width: 210px;
+    min-height: 200px;
+    border-radius: 6px;
+    padding: 10px;
+    font-size: 28px;
+    z-index: 100;
+}
+
+body.dark_mode .drop-down-content {
+    background-color: rgb(148, 147, 144);
+    color: black;
+}
+
+.drop-down-content a{
+    display: block;
+    text-decoration: none;
+
+    font-size: 20px;
+    padding: 10px;
+    color: black;
+    width: 100%;
+}
+
+
+.drop-down-content a:hover{
+    background-color: #cdc9c9;
+}
+
+.drop-down:hover .drop-down-content{
+    display: flex;
+    flex-direction: column;
+}
+
+.animation-div{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    align-self: flex-start;
+    margin-bottom: auto;
+    flex-wrap: wrap;
+    padding: 10px;
+    max-width: 100%;
+    width: 100%;
+    border: 1px solid green;
+    border-radius: 10px;
+    background-color: rgb(171, 205, 205);
+    
+}
+
+body.dark_mode .animation-div{
+    background-color: rgb(28, 42, 28);
+}
+
+.animation-div .drop-down{
+    margin-left: auto;
+    border-radius: 20%;
+}
+
+body.dark_mode .animation-div .drop-down {
+    background-color: rgb(20, 52, 52);
+    border: 1px solid aqua;
+}
+
+.animation-div .drop-down .menu{
+    font-size: 40px;
+}
+
+.animation-div .animation {
+    height: 90px;
+    width: 90px;
+    border-radius: 50%;
+    background: conic-gradient(rgb(87, 182, 75), rgb(35, 49, 7), rgb(17, 185, 95),rgb(48, 79, 35), rgb(26, 138, 18));
+    animation: spin 3s linear infinite;
+    overflow: auto;
+    box-shadow: 0 0 15px rgb(12, 114, 38);
+
+
+}
+
+@keyframes spin{
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
+}
+
+.animation-div .animation:hover{
+    animation-direction: reverse;
+    animation-duration: 1s;
+}
+
+.add-task-section form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1  1 auto;
+    max-width: 100%;
+    width: 100%;
+    min-width: 0;
+    margin-bottom: auto;
+    padding: 30px;
+    padding-bottom: 140px;
+    height: 100%;
+    overflow: auto;
+    z-index: 0;
+    
+}
+
+.show-task-section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1 1 auto;
+    height: 100%;
+    padding: 10px;
+    overflow: auto;
+    background-color: rgb(53, 66, 66);
+    border-radius: 20px;
+}
+
+
+body.dark_mode .show-task-section {
+    background-color: rgb(27, 27, 29);
+}
+
+.show-task-section .tasks-list{
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    height: 300px;
+    align-items: center;
+    justify-content: center;
+    max-width: 100%;
+    padding: 20px;
+    overflow-wrap: anywhere;
+    white-space: normal;
+    overflow: auto;
+    border-radius: 25%;
+    margin-bottom: 192px;
+    background-color: aliceblue;
+    box-shadow: 0px  0px  19px rgb(43, 226, 113);
+    padding-top: auto;
+    font-size: 25px;
+}
+
+body.dark_mode .show-task-section .tasks-list {
+    background-color: rgb(75, 91, 91);
+}
+
+label{
+    cursor: pointer;
+}
+
+.add-task-section form input{
+    width: 100%;
+    height: 200px;
+    text-align: center;
+    text-wrap: wrap;
+    font-size: 26px;
+    border: none;
+    border-radius: 10%;
+    background-color: aliceblue;
+    outline: none;
+    transition: box-shadow 0.5s;
+    padding: 20px;
+}
+
+body.dark_mode .add-task-section form input {
+    background-color: rgb(75, 91, 91);
+    color: aliceblue;
+}
+
+input{
+    color: rgb(0, 0, 0);
+}
+input:focus{
+    color: rgb(0, 0, 0);
+    box-shadow: 0px  0px  19px rgb(221, 221, 34);
+
+}
+
+.add-task-section form label{
+    font-size: 30px;
+    margin-bottom: 30px;
+}
+
+.add-task-section form button{
+    font-size: 20px;
+    height: 50px;
+    width: 200px;
+    margin-top: 30px;
+    border-radius: 10%;
+    background-color: rgb(43, 226, 113);
+    border: none;
+    transition: all 0.5s ease-in-out;
+    box-shadow: 0px  0px  11px;
+}
+
+
+body.dark_mode .add-task-section form button{
+    background-color: rgb(28, 42, 28);
+    border: 1px solid green;
+    color: rgb(180, 176, 172);
+    box-shadow: none;
+}
+
+body.dark_mode .add-task-section form button:hover {
+    color: aqua;
+}
+
+.add-task-section form button:hover{
+    background-color: rgb(34, 125, 34);
+    color: aquamarine;
+    transform: scale(1.05);
+    box-shadow: none;
+}
+
+.add-task-section h1{
+    font-size: 30px;
+}
+
+.show-task-section h3{
+    display: flex;
+    flex-direction: row;
+    font-size: 30px;
+    background-color: rgb(43, 226, 113);
+    padding: 20px;
+    border: none;
+    border-radius: 20px;
+    gap: 20px;
+    height: max-content;
+    align-items: center;
+}
+
+body.dark_mode .show-task-section h3 {
+    background-color: rgb(30, 99, 57);
+}
+
+.show-task-section span{
+    display: flex;
+    overflow: hidden;
+    background-color: rgb(5, 31, 5);
+    width: 80px;
+    height: 60px;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.show-task-section span p{
+    font-weight: bolder;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    color: aqua;
+    animation: scrollUp 0.5s forwards;
+}
+
+
+@keyframes scrollUp{
+    from{
+        opacity: 0;
+        transform: translateY(400px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+ul{
+    z-index: 1000;
+}
+
+.no-bullet{
+    animation: scrollLeft 0.5s forwards;
+    transform: translateX(-400px);
+}
+
+.bullet{
+    animation: scrollLeft 0.5s forwards;
+    transform: translateX(-400px);
+    z-index: 1000;
+}
+
+@keyframes scrollLeft{
+    from{
+        opacity: 1;
+        transform: translateX(-950px);
+        color: yellow;
+    }
+    to{
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+

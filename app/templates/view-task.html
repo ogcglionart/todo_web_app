@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<htm>
+    <head>
+        <title>View task</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename= 'view-task.css') }}">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    </head>
+    {% extends "base.html" %}
+    <body>
+        {% block content %}
+            <main>
+                <div class="h1">
+                    <h1>All Added Tasks</h1>
+                </div>
+                <section class="all-tasks">
+                    <div class="pending">
+                        <h3>Pending</h3>
+                        <div class="pending-task">
+                            {% if pending_task %}
+                                {% for task in pending_task %}
+                                    <ul>
+                                        <li>
+                                            {{task}}
+                                        </li>
+                                    </ul>
+                                {% endfor %}
+                            {% else %}
+                                <p style="font-size: 20px; color: red; position: relative; bottom: 60px;"> No pending tasks yet! </p>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="completed">
+                        <h3>Completed</h3>
+                        <div class="ccompleted-task">
+                            {% if completed_task %}
+                                {% for task in completed_task %}
+                                    <ul>
+                                        <li>
+                                            {{task}}
+                                        </li>
+                                    </ul>
+                                {% endfor %}
+                            {% else %}
+                                <p style="font-size: 20px; color: green; position: relative; bottom: 60px;"> No completed tasks yet! </p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </section>
+            </main>
+        {% endblock %}
+    </body>
+</htm>

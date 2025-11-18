@@ -1,0 +1,200 @@
+
+*, *::before,*::after{
+    box-sizing: border-box;
+    margin: 0;
+}
+
+html, body{
+    margin: 0;
+    height: 100%;
+}
+
+body {
+    display: flex;
+    padding: 0;
+    margin: 0;
+    min-height: 100%;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(189, 189, 189);
+    overflow: auto;
+}
+
+
+input[type="radio"]{
+    display: none;
+    cursor: pointer;
+}
+
+.radio_btn1, .radio_btn2 {
+    cursor: pointer;
+}
+
+label.custom_radio1:has(input[type="radio"]:checked){
+    color: rgb(255, 255, 255);
+    background-color: green !important;
+    font-weight: bolder;
+    cursor: pointer;
+}
+
+label.custom_radio2:has(input[type="radio"]:checked){
+    color: rgb(255, 255, 255);
+    background-color: rgb(147, 19, 19) !important;
+    font-weight: bolder;
+    cursor: pointer;
+}
+
+label:has(input[type="radio"]:checked) .radio_btn1{
+    color: rgb(255, 255, 255);
+}
+
+label:has(input[type="radio"]:checked) .radio_btn2{
+    color: rgb(255, 255, 255);
+}
+
+.radio_btn1{
+    color: rgba(9, 113, 37, 0.8);
+
+}
+
+.radio_btn2{
+    color: rgba(154, 10, 10, 0.8);
+
+}
+
+.custom_radio1, .custom_radio2{
+    padding: 10px;
+    box-sizing: border-box;
+    max-height: 100%;
+    border-radius: 10px;
+}
+
+#c-r2{
+    background-color: rgba(254, 0, 0, 0.1);
+    border: 1px solid red;
+    font-size: 12px;
+}
+
+#c-r1 {
+    background-color: rgba(162, 255, 149, 0.1);
+    border: 1px solid green;
+    font-size: 12px;
+}
+
+
+body main{
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 100%;
+    max-width: 100%;
+    height: 700px;
+    box-sizing: border-box;
+    overflow: auto;
+    min-height: 100%;
+    background-color: rgb(174, 174, 183);
+    padding: 60px 200px;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    width: 900px;
+    height: 500px;
+    padding: 20px;
+    box-sizing: border-box;
+    gap: 30px;
+    overflow: auto;
+    margin-top: 60px;
+    box-shadow: 0 0 10px black;
+}
+
+form > * {
+    display: flex;
+    align-self: flex-start;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    border-radius: 20px;
+    font-size: 20px;
+    overflow-wrap: anywhere;
+    flex-direction: row;
+    max-width: 100%;
+    gap: 50px;
+    background-color: rgb(255, 255, 255);
+}
+
+
+body.dark_mode form > * {
+    background-color: rgb(24, 24, 24);
+}
+
+body.dark_mode main .side-text{
+    background-color: rgb(35, 34, 34);
+    color: rgb(19, 90, 153);
+}
+
+
+.mark-done-div{
+    display: flex; 
+    flex-direction: row; 
+    align-items: center; 
+    justify-content: center; 
+    width: 300px;
+    gap: 50px;
+    min-height: 100px;
+    flex-wrap: wrap;
+    font-size: 17px;
+    border-left: 1px solid rgba(0, 0, 0, 0.333);
+}
+
+body.dark_mode .mark-done-div {
+    background-color: rgb(37, 40, 38);
+}
+
+
+main h1{
+    background-color: rgb(143, 149, 160);
+    font-size: 20px;
+    padding: 20px;
+    border: none;
+    box-shadow: 0px 0px 20px aquamarine;
+    border-radius: 20px;
+
+}
+
+body.dark_mode h1{
+    background-color: black;
+    box-shadow: 0 0 10px;
+}
+
+.label{
+    width: 700px;
+    display: flex;
+    align-items: center;
+    padding: 9px 20px;
+    max-width: 100%;
+}
+
+
+button{
+    align-self: flex-end;
+    margin-bottom: 20px;
+    position: sticky;
+    top: 0;
+    background-color: rgb(0, 0, 0);
+    color: aliceblue;
+    border-radius: 20px;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease-in-out;
+    border: none;
+}
+
+button:hover{
+    background-color: rgb(10, 71, 26);
+    transform: scale(1.1);
+    border: none;
+}

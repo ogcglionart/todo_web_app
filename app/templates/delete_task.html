@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Delete</title>
+        <link rel="stylesheet" href="{{url_for('static', filename='delete_task.css')}}">
+    </head>
+    {% extends "base.html" %}
+    <body>
+        {% block content %}
+            <header>
+                <div>
+                    <h1>Delete a task</h1>
+                </div>
+            </header>
+            <main>
+                {% if tasks %}
+                    {% for task in tasks %}
+                        <div class="task-div">
+                            <span>{{task['task_text']}}</span>
+                            <form id="form" action="{{url_for('task_bp.delete',task_id= task['id'])}}" method="POST">
+                                <button type="submit">Delete</button>
+                            </form>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                        <p class="message">
+                            {{message}}
+                        </p>
+                {% endif %}
+            </main>
+        {% endblock %}
+    </body>
+</html>

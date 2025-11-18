@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+    </head>
+    {% extends "base.html" %}
+    <body>
+        {% block content %}
+            <div id="container">
+                <div id="move_left_right_wrapper">
+                    <div id="move_right">
+                        <form method="post" class="form">
+                            <div id="user_input" class="users_input">
+                                <div class="input_heading">
+                                    <p>LOGIN</p>
+                                </div>
+                                <div class="input-div">
+                                    <div>
+                                        <p id="input_heading">User</p>
+                                    </div>
+                                    <input type="text"
+                                        name="user_name"
+                                        id="user"
+                                        class="login_inputs"
+                                        placeholder="Enter your user name"
+                                        required 
+                                        oninvalid="this.setCustomValidity('Please enter username.')"
+                                        oninput="this.setCustomValidity('')"
+                                    >
+                                </div>
+                            </div>
+                            <div id="user_pass_input" class="users_input">
+                                <div class="input-div">
+                                    <div>
+                                        <p id="input_heading_pass">Password</p>
+                                    </div>
+                                    <input type="password"
+                                        name="user_password"
+                                        id="password"
+                                        class="login_inputs"
+                                        placeholder="Password"
+                                        required
+                                        oninvalid="this.setCustomValidity('Please enter password.')"
+                                        oninput="this.setCustomValidity('')"
+                                    >
+                                </div>
+                                {% with messages= get_flashed_messages() %}
+                                    {% if messages%}
+                                        {% for message in messages %}
+                                            <p id="message">{{message}}</p>
+                                        {% endfor %}
+                                    {% endif %}
+                                {% endwith %}
+                            </div>
+                            <div id="login_btn_cont">
+                                <div id="error-cont">
+                                    {% if error %}
+                                        <p class="error">{{error}}</p>
+                                    {% endif %}
+                                </div>
+                                <button type="submit" id="login_btn">Login</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div id="move_left">
+                        <div id="welcome">
+                            <div class="circle-rotate"></div>
+                            <div>
+                                <h1>Welcome to Tasky! 🗓</h1>
+                            </div>
+                        </div>
+                        <hr>
+                        <div id="todo">
+                            <h3>Your TO-DO-APP</h3>
+                        </div>
+                        <div id="description">
+                            <div id="">Manage all your task with ease!...</div>
+                            <div>Don't have an account?</div>
+                        </div>
+                        <hr>
+                        <a id="sign" href="/signup" onclick=" event.preventDefault(); openModal()">Signup</a>
+                    </div>
+                </div>
+                <div id="move_bottom">
+                    <span>About.</span>
+                    <span>Terms.</span>
+                    <span>Languge</span>
+                </div>
+            </div>
+            <div id="signupModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal()">&times;</span>
+                    <h2>Sign up</h2>
+                    <form  id="modal-form" method="POST" action="/signup">
+                        <div id="modal-input">
+                            <input id="user-modal" class="m-inputs" type="text" name="user_name" placeholder="Enter User name" required>
+                            <input id="password-modal" class="m-inputs" type="password" name="password" placeholder="Password" required>
+                        </div>
+                        <div id="modal-btn-cont">
+                            <button id="modal-btn" type="submit">Create Account</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <script>
+                function openModal() {
+                    document.getElementById('signupModal').style.display = "block";
+                }
+                function closeModal(){
+                    document.getElementById('signupModal').style.display = "none";
+                }
+                window.onclick = function(event) {
+                    if (event.target == document.getElementById('signupModal')){
+                        closeModal();
+                    }
+                }
+            </script>
+        {% endblock %}
+    </body>
+</html>

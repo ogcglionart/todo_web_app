@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=0.5">
+        <title>{% block title %} Home {% endblock%}</title>
+        <link rel="stylesheet" href="{{url_for('static', filename='home.css') }}">
+    </head>
+    {% extends "base.html" %}
+    <body>
+        {% block content %}
+            <header>
+                <div class="form-container">
+                    <form 
+                        id="profile-form"
+                        action="{{ url_for('user_bp.home') }}"
+                        method="Post"
+                        enctype="multipart/form-data"
+                        >
+                        <label for="profile-upload">
+                            <img 
+                                src="{{ url_for('static', filename='uploads/' + user['profilepic']) }}" 
+                                alt="profile picture"
+                                class="profile-pic"
+                                title="click to change profile picture"
+                            />
+                        </label>
+                        <input 
+                            type="file"
+                            id="profile-upload"
+                            name="profile-image"
+                            accept="image/png, image/jpeg, image/webp, image/jpg"
+                            style="display: none;"
+                        >
+                    </form>
+                    <div class="user-name">
+                        <h2>{{user['username']}}</h2>
+                    </div>
+                </div>
+
+                <nav>
+                    <a href="{{url_for('user_bp.home')}}" class="active">Home</a>
+                    <a href="{{url_for('task_bp.add_task')}}">Add Tasks</a>
+                    <a href="{{url_for('task_bp.view_task')}}">View Tasks</a>
+                    <a href="{{url_for('user_bp.manage_task')}}">Manage Tasks</a>
+
+                    <div class="drop-down">
+                        <a class="drop-btn">More..</a>
+                        <div class="drop-down-content">
+                            <a href="{{url_for('user_bp.history')}}">View History</a>
+                            <a href="{{url_for('trash_bp.trash')}}">Trash 🗑</a>
+                                <a href="#" id="toggle-dark-mode">{{ 'Dark mode' if message else 'Light mode' }}</a>
+                            <a href="">Settings</a>
+                            <a  class="log out" onclick="window.location.href='/logout' " style="cursor: pointer;">Logout</a>
+                        </div>
+                    </div>
+                </nav>
+
+                <section class="header-section">
+                    <div class="move-top-bottom-container-i">
+                            
+                        <div class="header-welcome-txt">
+                            <p class="section-i-welcome-txt">Hello! {{user['username']}} What would you like to do today!? 😃</p>
+                        </div>
+
+                        <div class="img-txt-container">
+                            <div class="move-left-img">
+                                <img src="{{ url_for('static', filename='tasky.png') }}" >
+                            </div>
+
+                            <div class="move-right-text">
+                                <div class="right-text-i">
+                                    <h1 class="right-header" style="font-size: 40px;
+                                                                    margin-bottom: 60px;"> We are thrilled to have you as part of the tasky family!.</h1>
+                                </div>
+
+                                <div class="right-text-ii">
+                                    <h4 class="right-header">With tasky every step you take brings you closer to mastering 
+                                        your time and managing your daily activities efortlesly and
+                                        stress free.
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </header>
+
+
+            <main>
+                <div class="move-left-right-container-ii">
+                    <div class="move-left-text"> 
+                        <h4>Take your first step today!</h4>
+                    </div>
+
+                    <div class="move-right-task-btn">
+                        <button onclick="window.location.href='/add_task' "><span>Add Task</span></button>
+                    </div>
+                </div>
+            </main>
+
+
+            <footer>
+                <section class="footer-section-i">
+                    <p>"Stay productive with Tasky, keep crushing your tasks!"</p>
+                </section>
+                
+                <section class="footer-section-ii">
+                    <span class="footer-left">
+                        <h1>Socials</h1>
+                        <ul>
+                            <li><a href="https://www.instagram.com/ogcglionart/?hl=en">Instagram: @TaskyApp</a></li>
+                            <li><a href="https://web.facebook.com/lionartogc">Facebook: @TaskyApp</a></li>
+                            <li><a href="https://x.com/Lionartogc">Twiter: @TaskyApp</a></li>
+                            <li><a href="https://www.tiktok.com/@ogc.lionart?lang=en">TikTok: @TaskyApp</a></li>
+                        </ul>
+                    </span>
+
+                    <span class="footer-center">
+                        <h1>About</h1>
+                        <p>Tasky empowers you to stay organized and in control of your 
+                            day-to-day plans, helping you manage your time with clarity 
+                            and confidence.
+                        </p>
+                        <div class="Copyright">
+                            <h3>Copyright</h3>
+                            <h5>© 2025 tasky Inc.</h5>
+                        </div>
+                    </span>
+
+                    <span class="footer-right">
+                        <h1>Feedback</h1>
+                        <form action="{{ url_for('feedback_bp.feedback') }}" method="post">
+                            <textarea  name="Feedback" placeholder="We would love to hear your thoughts! Tell us about your experience and let us know if there is anything you would like us to improve."></textarea>
+                            <button type="submit">Send</button>
+                        </form>
+                    </span>
+                </section>
+            </footer>
+
+            <script>
+                // Watch for visibility using IntersectionObserver
+                const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("active");   
+                        observer.unobserve(entry.target);
+                    } else {
+                        entry.target.classList.remove("active"); 
+                    }
+                });
+                }, { threshold: 0.6 }); 
+
+                document.querySelectorAll(".right-header, .header-welcome-txt p, .move-left-text, .footer-section-i p").forEach(el => observer.observe(el));
+
+
+                const toggleBtn = document.getElementById("toggle-dark-mode");
+
+                // Apply saved mode on page load
+                if ("{{ user['darkmode'] }}" === "enabled") {
+                    document.body.classList.add("dark_mode");
+                }
+
+                toggleBtn.addEventListener("click", async (e) => {
+                    e.preventDefault(); // stop default link behavior
+
+                    // Toggle dark class
+                    document.body.classList.toggle("dark_mode");
+
+                    // Determine new mode
+                    let mode = document.body.classList.contains("dark_mode") ? "enabled" : "disabled";
+
+                    // Update Flask DB
+                    await fetch("{{ url_for('user_bp.toggle_mode') }}", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ mode })
+                    });
+
+                    // Update button text
+                    toggleBtn.textContent = mode === "enabled" ? "Light mode" : "Dark mode";
+                });
+
+                const profileInput = document.getElementById("profile-upload");
+                const profileForm = document.getElementById("profile-form");
+                const profileImg = profileForm.querySelector("img");
+
+                profileInput.addEventListener("change", async () => {
+                    const file = profileInput.files[0];
+                    if (!file) return;
+
+                    const formData = new FormData();
+                    formData.append("profile-image", file);
+
+                    try {
+                        const response = await fetch("{{ url_for('user_bp.update_profile_pic') }}", {
+                            method: "POST",
+                            body: formData
+                        });
+
+                        const data = await response.json();
+                        if (data.status === "ok") {
+                            // Update image src immediately without reloading
+                            const timestamp = new Date().getTime(); // prevent caching
+                            profileImg.src = `{{ url_for('static', filename='uploads/') }}${data.filename}?t=${timestamp}`;
+                        } else {
+                            alert("Failed to upload image");
+                        }
+                    } catch (err) {
+                        console.error(err);
+                        alert("Error uploading image");
+                    }
+                });
+
+
+            </script>
+        {% endblock %}
+    </body>
+</html>

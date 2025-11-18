@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add task</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='add-task.css') }}">
+</head>
+{% extends "base.html" %}
+<body>
+    {% block content%}
+        <main class="main-container">
+            <section class="add-task-section">
+
+                <div class="animation-div">
+                    <div class="animation"></div>
+                    <h1>Tasky</h1>
+
+                    <div class="drop-down">
+                        <span class="menu">&#9776;</span>
+                        <div class="drop-down-content">
+                            <a href="{{url_for('user_bp.home')}}">Home</a>
+                            <a href="{{url_for('task_bp.view_task')}}">View Tasks</a>
+                            <a href="{{url_for('user_bp.manage_task')}}">Manage Tasks</a>
+                            <a href="{{url_for('auth_bp.logout')}}">Logout</a>
+                        </div>
+                    </div>
+                </div>
+
+                <form method="post">
+                    <label for="task-input">Add a task</label>
+                    <input type="text" name="task" autocomplete="off" id="task-input">
+                    <button>Add Task</button>
+                </form>
+            </section>
+
+            <section class="show-task-section">
+                <h3>
+                    Task Added
+                    <span class="count">  
+                        {% if count_task %}
+                            <div class="count"><p>{{ count_task }}</p></div>
+                        {% else %}
+                            <div class="count"><p>{{ default_count }}</p></div>
+                        {% endif %}
+                    </span>
+                </h3>
+                <div class="tasks-list">
+                    {% if tasks  == message %}
+                        <p class="no-bullet">
+                            {{message}}
+                        </p>
+                    {% else %}
+                        <p class="bullet">
+                            {{tasks}}
+                        </p>
+                    {% endif %}
+                </div>
+                <div class="line"></div>
+            </section>
+        </main>
+    {% endblock %}
+</body>
+</html>

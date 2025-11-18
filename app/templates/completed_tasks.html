@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Completed tasks</title>
+        <link rel="stylesheet" href="{{url_for('static', filename='completed-task.css')}}">
+    </head>
+    {% extends "base.html" %}
+    <body>
+        {% block content %}
+            <header>
+                <div class="header-div">
+                    <h1>Completed Tasks</h1>
+                    <button type="button" onclick="window.location.href='/mark_status' ">Mark as pending</button>
+                </div>
+            </header>
+            <main>
+                <div class="list-div">
+                    <ul>
+                        {% if not completed_tasks%}
+                            <p>{{message}}</p>
+                        {% else %}
+                            {% for task in completed_tasks%}
+                                <li>
+                                    {{ task['task_text'] }}
+                                </li>
+                            {% endfor %}
+                        {% endif %}
+                    </ul>
+                </div>
+            </main>
+        {% endblock %}
+    </body>
+</html>

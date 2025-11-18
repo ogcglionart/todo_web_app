@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{{url_for('static', filename='history.css')}}">
+        <title>History</title>
+    </head>
+    {% extends "base.html" %}
+    <body>
+        {% block content %}
+            <header>
+                <h1>Tasks History</h1>
+            </header>
+            <main>
+                <table border="1">
+                    <tr style="border: 1px solid red;">
+                        <th>Task</th>
+                        <th>Status</th>
+                        <th>Created At</th>
+                        <th>Completed At</th>
+                    </tr>
+                    {% for task in tasks %}
+                        <tr>
+                            <td style="width: 400px;">{{task['task_text']}}</td>
+                            <td>{{task['status']}}</td>
+                            <td>{{task['created_at']}}</td>
+                            <td>{{task['completed_at']}}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </main>
+        {% endblock %}
+    </body>
+</html>

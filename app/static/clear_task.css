@@ -1,0 +1,117 @@
+*, *::before,*::after{
+    box-sizing: border-box;
+}
+
+html, body{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+
+
+body{
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100%;
+    background-color: rgb(81, 165, 137);
+    gap: 30px;
+}
+
+
+
+header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 80px;
+    align-items: center;
+    padding: 10px 60px;
+    width: 100%;
+    background-color: rgb(7, 116, 94);
+}
+
+
+header h1{
+    color: white;
+    font-size: 30px;
+}
+
+body.dark_mode header h1 {
+    text-shadow: 3px 3px 9px rgb(123, 111, 111);
+}
+
+header button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    height: 40px;
+    width: 109px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.4s ease-in-out;
+    border: none;
+    box-shadow: 0 0 10px black;
+}
+
+header button:hover{
+    background-color: rgb(178, 13, 13);
+    transform: scale(1.1);
+}
+
+main{
+    width: 700px;
+    height: 650px;
+    padding: 50px;
+    
+}
+
+main form{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px 100px;
+    font-size: 30px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    overflow-wrap: break-word;
+    max-height: 100%;
+    border-radius: 20px;
+    box-shadow: 0 0 25px black;
+    background-color: aquamarine;
+}
+
+body.dark_mode main form{
+    background-color: rgb(16, 40, 32);
+}
+
+body.dark_mode main{
+    background-color: transparent !important;
+}
+
+
+form p{
+    background-color: rgb(255, 255, 255);
+    min-width: 400px;
+    margin: 60px;
+    padding: 20px;
+    border-radius: 20px;
+    font-size: 20px;
+}
+
+
+body.dark_mode form p{
+    background-color: black;
+}
+
+
+.alert{
+    background-color: red;
+    padding: 15px;
+    color: aliceblue;
+    margin: 10px;
+}

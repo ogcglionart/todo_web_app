@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Manage Tasks</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='manager.css') }}">
+    </head>
+    {% extends "base.html" %}
+    <body>
+        {% block content %}
+            <main>
+                <div class="h1" style="display: flex; flex-direction: row; justify-content: space-between;">
+                    <h1>Task Manage <span>⚙️</span></h1>
+                    <div onclick="window.location.href='/home'" style="cursor: pointer; font-size: 30px;"><spana style="box-shadow: rgb(91, 134, 137) 0px 0px 14px; border-radius: 20px; padding: 9px;">🔙</span></div>
+                </div>
+                <section class="menu-section">
+                    <div class="menu">
+                        <ul>
+                            <li><a href="{{url_for('task_bp.view_task')}}">View Tasks</a></li>
+                            <li><a href="{{url_for('task_bp.mark_status')}}">Mark Task as done</a></li>
+                            <li><a href="{{url_for('task_bp.pending_task')}}">Pending Tasks</a></li>
+                            <li><a href="{{url_for('task_bp.completed_task')}}">Completed Tasks</a></li>
+                            <li><a href="{{url_for('task_bp.clear_task')}}">Clear Tasks</a></li>
+                            <li><a href="{{url_for('task_bp.delete_task')}}">Delete Tasks</a></li>
+                        </ul>
+                    </div>
+                </section>
+            </main>
+        {% endblock %}
+    </body>
+</html>

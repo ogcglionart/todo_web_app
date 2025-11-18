@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Clear Tasks</title>
+        <link rel="stylesheet" href="{{url_for('static', filename='clear_task.css')}}">
+    </head>
+    {% extends "base.html" %}
+    <body>
+        {% block content %}
+            <header>
+                <h1>All added tasks</h1>
+                <button type="submit" form="clear_task_form">Clear all tasks</button>
+            </header>
+            <main>
+                <form id="clear_task_form" action="{{url_for('task_bp.clear_task')}}" method="POST">
+                    {% if tasks %}
+                        {% for task in tasks %}
+                            <p>{{task['task_text']}}</p>
+                        {% endfor %}
+                    {% else %}
+                        <p>{{message}}</p>
+                    {% endif %}
+                </form>
+            </main>
+        {% endblock %}
+    </body>
+</html>

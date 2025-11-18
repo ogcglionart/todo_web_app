@@ -1,0 +1,360 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+
+body{
+    display: flex;
+    background-image: url("pencil.webp");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    min-width: max-content;
+    min-height: max-content;    
+}
+
+
+#container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    height: 60%;
+    padding: 0px;
+    background-color: rgb(253, 253, 253);
+    flex-direction: column;
+    gap: 8px;
+    border-radius: 5%;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(37, 37, 37, 0.565);
+    min-height: 430px;
+    min-width: max-content;
+}
+
+#move_left_right_wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    border-bottom: 1px solid rgb(94, 92, 90);
+    padding: 20px;
+}
+
+
+#move_right {
+    border-left: 1px solid rgb(94, 92, 90);
+    order: 1;
+    padding: 10px;
+    box-sizing: border-box;
+    width: 65%;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#move_left{
+    display: flex;
+    flex-direction: column;
+    order: 0;
+    padding: 10px;
+    box-sizing: border-box;
+    width: 35%;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#move_bottom{
+    width: 100%;
+    text-align: center;
+    background-color: rgba(14, 102, 67, 0.789);
+    padding: 10px;
+    box-sizing: border-box;
+    font-size: 16px;
+    font-weight: bold;
+}
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    align-items: flex-end;
+    padding: 7px;
+    gap: 4px;
+    
+
+}
+
+#user {
+    height: 50px;
+    width: 100%;
+    font-size: 20px;
+    padding: 10px;
+}
+
+#password {
+    height: 50px;
+    width: 100%;
+    font-size: 20px;
+    padding: 10px;
+}
+
+#user_input{
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    width: 85%;
+    height: 65%;
+    padding: 5px;
+   
+}
+
+#user_pass_input {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 85%;
+    height: 45%;
+    padding: 5px;
+}
+
+.input_heading{
+    font-size: 25px;
+    font-weight: bolder;
+
+    
+}
+
+#input_heading{
+    font-size: 20px;
+    font-weight: bold;
+    margin: 5px;
+    
+}
+
+#input_heading_pass{
+    font-size: 20px;
+    font-weight: bold;
+    margin: 5px;
+}
+
+hr{
+    border: 1px solid rgb(94, 92, 90);
+    width: 75%;
+}
+
+#login_btn {
+    width: 21%;
+    height: 100%;
+    font-size: 20px;
+    background-color: rgba(14, 102, 67, 0.789);
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.4s ease-in-out;
+}
+#login_btn_cont{
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row;
+    align-items: center;
+    width: 85%;
+    height: 50px;
+    gap: 20px;
+    padding: 2px;
+    margin: 0;
+
+}
+
+.input-div{
+    display: flex;
+    flex-direction: column;
+    height: 100px;
+    width: 100%;
+    align-items: left;
+    justify-content: center;
+    border-top: 1px solid rgb(94, 92, 90);
+}
+
+#login_btn:hover{
+    background-color: rgba(11, 52, 37, 0.825);
+    transform: scale(1.03);
+}
+
+.error{
+    color: rgb(235, 26, 26);
+    right: 228px;
+    bottom: 80px;
+    font-size: 20px;
+    
+}
+
+#error-cont{
+    display: inline;
+
+}
+
+
+#description{
+    margin-top: 40px;
+    font-size: 20px;
+}
+
+#sign{
+    color: black;
+    font-size: 20px;
+    background-color: yellowgreen;
+    padding: 7px;
+    position: relative;
+    top: 20px;
+    text-decoration: none;
+    border-radius: 20px;
+}
+
+#sign:hover{
+    background-color: rgb(101, 162, 132);
+    
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    min-height: 500px;
+    min-width: max-content;
+}
+
+.modal-content{
+    background-color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    border-radius: 10px;
+    width: 40%;
+    height: 30%;
+    min-height: max-content;
+    min-width: max-content;
+    overflow-y: auto;
+
+}
+
+.close{
+    cursor: pointer;
+    font-size: 30px;
+}
+
+
+#modal-form{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    height: 70%;
+    gap: 2px;
+}
+#modal-input{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    height: 56px;
+    
+}
+
+.m-inputs{
+    height: 40px;
+    font-size: 20px;
+}
+
+
+#modal-btn{
+    height: 40px;
+    width: 17%;
+    font-weight: bold;
+    border-radius: 20%;
+    background-color:rgba(14, 102, 67, 0.789);
+    border: none;
+    transition: all ease-in-out 0.4s;
+}
+#modal-btn-cont{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: max-content;
+}
+
+
+#modal-btn:hover{
+    background-color:  rgba(11, 52, 37, 0.825);
+    transform: scale(1.03);
+}
+
+#password-modal{
+    margin-left: 10px;
+    padding: 7px;
+}
+
+#user-modal{
+    padding: 7px;
+}
+
+#message{
+    color: red;
+    
+}
+
+#welcome{
+    gap: 9px;
+    display: flex;
+    flex-direction: row;
+}
+
+.circle-rotate{
+    height: 40px;
+    width: 70px;
+    border-radius: 50%;
+    background: conic-gradient(rgb(87, 182, 75), rgb(35, 49, 7), rgb(17, 185, 95),rgb(48, 79, 35), rgb(26, 138, 18));
+    box-shadow: 0 0 15px rgb(12, 114, 38);
+    animation: spin 3s linear infinite;
+}
+
+.circle-rotate:hover{
+    animation-direction: reverse;
+    animation-duration: 1s;
+}
+
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}

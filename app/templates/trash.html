@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Trash</title>
+        <link rel="stylesheet" href="{{url_for('static', filename='trash.css')}}">
+        <style>
+            .hover-button:hover{
+                background-color: rgb(194, 186, 186);
+                color: rgb(0, 0, 0);
+            }
+            .hover-button{
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    {% extends "base.html" %}
+    <body>
+        {% block content %}
+            <header>
+                <div>
+                    <h1>Deleted Tasks</h1>
+                </div>
+                <div class="btn">
+                    <button title="Restore all tasks" type="submit" form="restore_all">Restore all</button>
+                    <button title="Delete all tasks permanently" type="submit" form="delete-all">Delete all</button>
+                </div>
+            </header>
+            <main>
+                {% if trash %}
+                    {% for task in trash %}
+                        <div class="form div">
+                            <span style="font-size: 20px;">{{task['task_text']}}</span>
+                            <div class="button-div" style="display: flex;
+                                                            min-width: 280px;
+                                                            justify-content: center;
+                                                            align-items: center;
+                                                            min-height: 40px;
+                                                            flex-wrap: wrap;
+                                                            padding: 10px;
+                                                            gap: 10px;">
+
+                                <form id="delete-all" action="{{ url_for('trash_bp.delete_all') }}" method="POST">
+
+                                </form>
+
+                                <form id="restore_all" action="{{ url_for('trash_bp.restore_all') }}" method="POST">
+
+                                </form>
+
+                                <form action="{{url_for('trash_bp.restore_trash', task_id = task['id'])}}" method="POST">
+                                    <button title="Restore task" class="hover-button" type="submit" style="height: 30px;
+                                                                width: 110px;
+                                                                border-radius: 20px;
+                                                                border: none;
+                                                                font-size: 20px;">Restore</button>
+                                </form>
+
+                                <form action="{{url_for('trash_bp.delete_trash',task_id = task['id'])}}" method="POST">
+                                    <button title="Delete permanently" class="hover-button" type="submit" style="width: 110px;
+                                                                height: 30px;
+                                                                border-radius: 20px;
+                                                                border: none;
+                                                                font-size: 20px;">Delete</button>
+                                </form>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p style="font-size: 30px;">{{message}}</p>
+                {% endif %}
+            </main>
+        {% endblock %}
+    </body>
+</html>
