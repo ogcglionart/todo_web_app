@@ -10,7 +10,6 @@ def db_error_handler(func):
         try:
             return func(*args, **kwargs)
         except MySQLdb.IntegrityError as e:
-            err_code = e.args[0]
             args[0].error.set_error(integrityErr=f"Integrity error: {e}")
             print(f"{e}")
 
